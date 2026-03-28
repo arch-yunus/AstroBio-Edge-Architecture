@@ -10,17 +10,24 @@ from src.utils.signal_processing import remove_background, detect_peaks, calcula
 from simulations.environment_simulator import PlanetSimulator
 from models.biosignature_detector import BiosignatureDetector
 from src.utils.fault_injector import FaultInjector
+from models.biosignature_nn import BiosignatureNN
+from hardware.power_manager import PowerManager
 
 class EdgeNode:
     def __init__(self, node_id="Astro-Edge-01"):
         self.node_id = node_id
         self.simulator = PlanetSimulator()
         self.detector = BiosignatureDetector()
+        self.nn_classifier = BiosignatureNN()
+        self.power_manager = PowerManager()
         self.fault_injector = FaultInjector()
         self.logs = []
 
     def run_discovery_cycle(self):
         print(f"[{self.node_id}] Keşif döngüsü başlatılıyor...")
+        
+        # 0. Enerji Tüketimi
+        current_battery = self.power_manager.consume_energy()
         
         # 1. Veri Edinimi (Simülasyondan)
         raw_data = self.simulator.generate_spectrum(has_biosignature=True)
@@ -38,14 +45,18 @@ class EdgeNode:
         # 4. Biosignature Analysis
         results = self.detector.analyze_spectrum(self.simulator.wavelengths, processed_data, peaks)
         
-        # 5. Result Handling
+        # 5. AI/ML Klasifikasyon (Derin Öğrenme Desteği)
+        ai_confidence = self.nn_classifier.classify_organic(peaks)
+        
+        # 6. Sonuç İşleme (Hibrit Model)
         event = {
             "timestamp": time.time(),
             "node_id": self.node_id,
             "snr": snr,
             "is_positive": results["is_positive"],
-            "confidence": results["confidence"],
-            "findings": results["findings"]
+            "confidence": (results["confidence"] + ai_confidence) / 2.0,
+            "findings": results["findings"],
+            "battery": f"%{current_battery:.1f}"
         }
         
         self.logs.append(event)
