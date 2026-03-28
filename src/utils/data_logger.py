@@ -17,7 +17,7 @@ class DataLogger:
         if not os.path.exists(self.csv_path):
             with open(self.csv_path, 'w', newline='') as f:
                 writer = csv.writer(f)
-                writer.writerow(["Timestamp", "NodeID", "EventID", "Confidence", "SterilityHash", "Status"])
+                writer.writerow(["ZamanDamgasi", "DugumID", "OlayID", "GuvenOrani", "SteriliteOzeti", "Durum"])
 
     def generate_sterility_hash(self, node_id):
         """
@@ -52,4 +52,4 @@ class DataLogger:
                 "BIO_POSITIVE" if event['is_positive'] else "NOMINAL"
             ])
 
-        print(f"[Logger] Event recorded for {event['node_id']} in {self.json_path}")
+        print(f"[Logger] {event['node_id']} için olay {self.json_path} dosyasına kaydedildi.")

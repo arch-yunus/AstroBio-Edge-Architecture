@@ -18,7 +18,7 @@ class EdgeNode:
         self.logs = []
 
     def run_discovery_cycle(self):
-        print(f"[{self.node_id}] Starting discovery cycle...")
+        print(f"[{self.node_id}] Keşif döngüsü başlatılıyor...")
         
         # 1. Data Acquisition
         raw_data = self.simulator.generate_spectrum(has_biosignature=True)
@@ -46,9 +46,9 @@ class EdgeNode:
         self.logs.append(event)
         
         if results["is_positive"]:
-            print(f"[{self.node_id}] WARNING: BIOSIGNATURE DETECTED with confidence {results['confidence']:.2f}!")
+            print(f"[{self.node_id}] UYARI: BİYOLOJİK İMZA TESPİT EDİLDİ! Güven oranı: {results['confidence']:.2f}")
         else:
-            print(f"[{self.node_id}] No significant biosignatures found. ROI scan complete.")
+            print(f"[{self.node_id}] Önemli bir biyolojik imza bulunamadı. Bölge taraması tamamlandı.")
         
         return event
 

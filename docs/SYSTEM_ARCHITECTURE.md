@@ -1,32 +1,32 @@
-# System Architecture: AstroBio-Edge
+# Sistem Mimarisi: AstroBio-Edge
 
-## 1. Introduction
-This document outlines the technical architecture of the AstroBio-Edge system, focusing on decentralized processing for astrobiological missions.
+## 1. Giriş
+Bu döküman, merkeziyetsiz astrobiyoloji görevleri için tasarlanan AstroBio-Edge sisteminin teknik mimarisini tanımlar.
 
-## 2. Layered Architecture
+## 2. Katmanlı Mimari
 
-### 2.1 Sensor Abstraction Layer (SAL)
-The SAL provides a unified interface for various sensors (e.g., Raman Spectrometers, Mass Spectrometers). 
-- **Goal**: Minimize coupling between hardware and logic.
-- **Implementation**: Virtualized device drivers.
+### 2.1 Sensör Soyutlama Katmanı (SAL)
+SAL, çeşitli sensörler (Raman Spektrometreleri, Kütle Spektrometreleri vb.) için birleşik bir arayüz sağlar.
+- **Hedef**: Donanım ve mantık arasındaki bağımlılığı en aza indirmek.
+- **Uygulama**: Sanallaştırılmış cihaz sürücüleri.
 
-### 2.2 Edge Processing Engine (EPE)
-This is the heart of the system where "discovery" happens.
-- **Organic Detection**: Heuristic-based analysis of spectral peaks.
-- **Feature Extraction**: Dimensionality reduction for efficient transmission.
-- **Autonomy**: Triggering high-fidelity scans based on low-fidelity cues.
+### 2.2 Uç İşleme Motoru (EPE)
+Sistemin "keşif" merkezidir.
+- **Organik Tespit**: Spektral tepelerin sezgisel analizi.
+- **Özellik Çıkarımı**: Verimli iletim için boyut küçültme.
+- **Otonomi**: Düşük çözünürlüklü ipuçlarına dayanarak yüksek hassasiyetli taramaları tetikleme.
 
-### 2.3 Mesh Communication Protocol (MCP)
-Handles the peer-to-peer data sharing between multiple landers or rovers in a swarm.
-- **Fault Tolerance**: Dynamic routing if a node fails.
-- **Priority**: Vital "Life Found" signals take precedence.
+### 2.3 Mesh İletişim Protokolü (MCP)
+Sürü halindeki birden fazla iniş aracı veya drone arasındaki eşler arası veri paylaşımını yönetir.
+- **Hata Toleransı**: Bir düğüm arızalandığında dinamik yönlendirme.
+- **Öncelik**: Hayati "Yaşam Bulundu" sinyalleri telemetride önceliklidir.
 
-## 3. Data Flow
-1. Raw Sensor Data -> SAL
-2. Cleaned Data -> EPE
-3. Detection Event -> MCP (Broadcast to Swarm)
-4. Prioritized Telemetry -> Ground Station
+## 3. Veri Akışı
+1. Ham Sensör Verisi -> SAL
+2. Temizlenmiş Veri -> EPE
+3. Tespit Olayı -> MCP (Sürüye Yayın)
+4. Önceliklendirilmiş Telemetri -> Yer İstasyonu
 
-## 4. Security & Integrity
-- **ECC**: Error Correction Codes for radiation-induced bit flips.
-- **Integrity**: Cryptographic hashing of detection events for immutable logging.
+## 4. Güvenlik ve Bütünlük
+- **ECC**: Radyasyon kaynaklı bit değişimleri için Hata Düzeltme Kodları.
+- **Bütünlük**: Değiştirilemez log tutma için tespit olaylarının kriptografik özetleri.

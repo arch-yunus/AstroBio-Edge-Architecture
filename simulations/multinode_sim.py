@@ -9,7 +9,7 @@ from src.mesh_coordinator import MeshCoordinator
 from src.utils.data_logger import DataLogger
 
 def run_mission():
-    print("STARTING: AstroBio-Edge Multi-Node Mission Simulation")
+    print("BAŞLATILIYOR: AstroBio-Edge Çoklu Düğüm Görev Simülasyonu")
     print("-------------------------------------------------------")
     
     logger = DataLogger()
@@ -18,12 +18,12 @@ def run_mission():
     # Simulate a 2-cycle scan mission
     coordinator.orchestrate_swarm(cycles=2)
     
-    # Log the final results
-    print("\n[Simulator] Finalizing mission logs...")
+    # Sonuçları kaydet
+    print("\n[Simülatör] Görev logları sonlandırılıyor...")
     for event in coordinator.global_registry:
         logger.log_event(event)
         
-    print("\n[Simulator] Mission Complete. Check logs/ directory for results.")
+    print("\n[Simülatör] Görev Simülasyonu Tamamlandı. Sonuçlar için logs/ dizinini kontrol edin.")
 
 if __name__ == "__main__":
     run_mission()

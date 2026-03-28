@@ -12,10 +12,10 @@ class MeshCoordinator:
         self.global_registry = []
 
     def orchestrate_swarm(self, cycles=1):
-        print(f"[Coordinator] Orchestrating swarm of {len(self.nodes)} nodes...")
+        print(f"[Koordinatör] {len(self.nodes)} düğümlük sürü yönetiliyor...")
         
         for c in range(cycles):
-            print(f"\n--- Mission Cycle {c+1} ---")
+            print(f"\n--- Görev Döngüsü {c+1} ---")
             cycle_results = []
             
             for node in self.nodes:
@@ -33,13 +33,13 @@ class MeshCoordinator:
         threshold = len(results) / 2
         
         if len(positives) > threshold:
-            print(f"\n[Coordinator] QUORUM REACHED! Consensus on Biosignature detected at target site.")
+            print(f"\n[Koordinatör] KORUM SAĞLANDI! Hedef bölgede Biyolojik İmza üzerinde konsensüs sağlandı.")
             avg_confidence = sum(r['confidence'] for r in positives) / len(positives)
-            print(f"[Coordinator] Aggregated Confidence: {avg_confidence:.2f}")
+            print(f"[Koordinatör] Birleşik Güven Oranı: {avg_confidence:.2f}")
         elif len(positives) > 0:
-            print(f"\n[Coordinator] Partial detection ({len(positives)}/{len(results)} nodes). Requesting ROI re-scan.")
+            print(f"\n[Koordinatör] Kısmi tespit ({len(positives)}/{len(results)} düğüm). Bölgenin yeniden taranması isteniyor.")
         else:
-            print(f"\n[Coordinator] Nominal telemetry across all nodes.")
+            print(f"\n[Koordinatör] Tüm düğümlerde nominal telemetri.")
 
 if __name__ == "__main__":
     coordinator = MeshCoordinator(swarm_size=4)

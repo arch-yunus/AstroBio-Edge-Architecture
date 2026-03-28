@@ -1,98 +1,88 @@
 # 🌌 AstroBio-Edge-Architecture
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Mission: TUA AstroHackathon](https://img.shields.io/badge/Mission-TUA%20AstroHackathon-blue.svg)](https://tua.gov.tr)
-[![Security: ESA-PSS-01](https://img.shields.io/badge/Security-ESA--PSS--01-green.svg)](#)
+[![Lisans: MIT](https://img.shields.io/badge/Lisans-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Görev: TUA AstroHackathon](https://img.shields.io/badge/G%C3%B6rev-TUA%20AstroHackathon-blue.svg)](https://tua.gov.tr)
+[![Güvenlik: ESA-PSS-01](https://img.shields.io/badge/G%C3%BCvenlik-ESA--PSS--01-green.svg)](#)
 
-**AstroBio-Edge-Architecture** is a next-generation technical ecosystem designed for decentralized astrobiological data processing. By leveraging edge computing at the point of discovery, it enables real-time biosignature detection and autonomous payload management in extreme environments.
-
----
-
-## 🚀 Overview
-
-Traditional space missions rely on high-latency downlinks for data analysis. **AstroBio-Edge** shifts the paradigm by implementing a distributed "Computing-at-the-Sensor" model, ensuring that critical biological signals are identified and prioritized before telemetry bottlenecks occur.
-
-### Key Pillars
-- **Decentralized Intelligence**: Peer-to-peer (P2P) edge nodes sharing analytical workloads.
-- **Dynamic Biosignature Filtering**: Low-latency algorithms for organic compound identification.
-- **ESA/NASA Compliance**: Built with planetary protection and radiation-hardening protocols in mind.
-- **Modular Payload Integration**: Simplified interface for spectroscopic, chemical, and microscopic sensors.
+**AstroBio-Edge-Architecture**, merkeziyetsiz astrobiyolojik veri işleme için tasarlanmış yeni nesil bir teknik ekosistemdir. Keşif noktasında uç bilişim (edge computing) kullanarak, ekstrem ortamlarda gerçek zamanlı biyolojik imza tespiti ve otonom yük yönetimi sağlar.
 
 ---
 
-## 🏗️ System Architecture
+## 🚀 Genel Bakış
 
-The architecture is divided into three primary layers:
+Geleneksel uzay görevleri, veri analizi için yüksek gecikmeli yer bağlantılarına dayanır. **AstroBio-Edge**, keşif esnasında kritik biyolojik sinyallerin telemetri darboğazlarından önce tanımlanmasını ve önceliklendirilmesini sağlayan "Sensörde Hesaplama" modelini uygular.
 
-1.  **Sensor Abstraction Layer (SAL)**: Standardizes data from diverse astrobiology payloads.
-2.  **Edge Processing Engine (EPE)**: Localized ML models and heuristic filters running on RISC-V/ARM architectures.
-3.  **Mesh Communication Protocol (MCP)**: Ensures data integrity and synchronization across distributed modules even in low-bandwidth scenarios.
+### Temel Sütunlar
+- **Merkeziyetsiz Zeka**: Analitik iş yüklerini paylaşan eşler arası (P2P) uç düğümler (edge nodes).
+- **Dinamik Biyolojik İmza Filtreleme**: Organik bileşik tanımlama için düşük gecikmeli algoritmalar.
+- **ESA/NASA Uyumluluğu**: Gezegensel koruma ve radyasyon dayanıklılık protokollerine uygun.
+- **Modüler Yük Entegrasyonu**: Spektroskopik, kimyasal ve mikroskobik sensörler için basitleştirilmiş arayüz.
+
+---
+
+## 🏗️ Sistem Mimarisi
+
+Mimari üç ana katmana ayrılmıştır:
+
+1.  **Sensör Soyutlama Katmanı (SAL)**: Farklı astrobiyoloji yüklerinden gelen verileri standartlaştırır.
+2.  **Uç İşleme Motoru (EPE)**: RISC-V/ARM mimarilerinde çalışan yerelleştirilmiş ML modelleri ve sezgisel filtreler.
+3.  **Mesh İletişim Protokolü (MCP)**: Düşük bant genişliğinde bile dağıtık modüller arasında veri bütünlüğünü ve senkronizasyonu sağlar.
 
 > [!IMPORTANT]
-> This system is designed for **Planetary Protection Category IV**, ensuring zero cross-contamination while maintaining high analytical fidelity.
+> Bu sistem, **Gezegensel Koruma Kategori IV** için tasarlanmış olup, yüksek analitik hassasiyeti korurken sıfır çapraz kontaminasyon sağlar.
 
 ---
 
-## 📂 Repository Structure
+## 📂 Depo Yapısı
 
 ```tree
 .
-├── src/            # Core processing logic and edge handlers
-├── docs/           # Technical specifications and compliance docs
-├── hardware/       # PCB designs, sensor integration schematics
-├── simulations/    # Digital twin environments for testing
-├── models/         # ML models for biosignature detection
-├── CHANGELOG.md    # Version tracking
-└── LICENSE         # MIT License
+├── src/            # Çekirdek işleme mantığı ve uç sistemler
+├── docs/           # Teknik şartnameler ve uyumluluk belgeleri
+├── hardware/       # PCB tasarımları ve sensör şemaları
+├── simulations/    # Testler için dijital ikiz ortamlar
+├── models/         # Biyolojik imza tespiti için ML modelleri
+├── CHANGELOG.md    # Versiyon takibi
+└── LICENSE         # MIT Lisansı
 ```
 
 ---
 
-## 🛠️ Technical Stack
+## 🛠️ Teknik Yığın
 
-- **Languages**: Rust (Safety-critical), Python (Data Science), C++ (Embedded Drivers)
-- **Frameworks**: micro-ML, RTOS (FreeRTOS/Zephyr), Protocol Buffers
-- **Hardware Targets**: RISC-V (PolarFire SoC), ARM Cortex-M7
-- **Standards**: CCSDS (Communication), NASA-STD-8739.8 (Software Assurance)
+- **Diller**: Rust (Güvenlik kritik), Python (Veri Bilimi), C++ (Gömülü Sürücüler)
+- **Çerçeveler**: micro-ML, RTOS (FreeRTOS/Zephyr), Protocol Buffers
+- **Donanım Hedefleri**: RISC-V (PolarFire SoC), ARM Cortex-M7
+- **Standartlar**: CCSDS (İletişim), NASA-STD-8739.8 (Yazılım Güvencesi)
 
 ---
 
-## 📡 Deployment & Usage
+## 📡 Kurulum ve Kullanım
 
-### Prerequisites
+### Ön Koşullar
 - Python 3.10+
-- Rust Toolchain
-- Cross-compiler for targeted hardware
+- Rust Araç Zinciri
+- Hedef donanım için çapraz derleyici (Cross-compiler)
 
-### Local Simulation
+### Yerel Simülasyon
 ```bash
-# Clone the repository
+# Depoyu klonlayın
 git clone https://github.com/arch-yunus/AstroBio-Edge-Architecture.git
 
-# Initialize simulation environment
+# Simülasyon ortamını hazırlayın
 python simulations/setup_env.py
 ```
 
 ---
 
-## 📜 Roadmap
+## 🤝 Katkıda Bulunma
 
-- [x] Initial Architecture Framework
-- [/] Edge Node Mesh Protocol Implementation
-- [ ] Integration with Spectrometry Payloads
-- [ ] NASA/ESA Compliance Audit
-- [ ] Field Testing in Analog Environments
+Araştırmacıları, gezegen bilimcileri ve yazılım mühendislerini bekliyoruz. Lütfen yakında eklenecek olan `CONTRIBUTING.md` dosyasını inceleyin.
 
 ---
 
-## 🤝 Contributing
+## ⚖️ Lisans
 
-We welcome researchers, planetary scientists, and software engineers. Please see `CONTRIBUTING.md` (coming soon) for guidelines.
+MIT Lisansı altında dağıtılmaktadır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
 
----
-
-## ⚖️ License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-**Contact**: [Yunus] - GitHub: [@arch-yunus](https://github.com/arch-yunus)
+**İletişim**: [Yunus] - GitHub: [@arch-yunus](https://github.com/arch-yunus)

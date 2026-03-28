@@ -1,19 +1,19 @@
-# AstroBio-Edge: Mission Compliance & Software Assurance
+# AstroBio-Edge: Görev Uyumluluğu ve Yazılım Güvencesi
 
-This document outlines the protocols and checklists used to ensure compliance with NASA-STD-8739.8 and ESA Planetary Protection Category IV.
+Bu belge, NASA-STD-8739.8 ve ESA Gezegensel Koruma Kategori IV uyumluluğunu sağlamak için kullanılan protokolleri ve kontrol listelerini özetler.
 
-## 1. NASA-STD-8739.8 (Software Assurance)
-- [x] **Modular Architecture**: Systems are decoupled into SAL, EPE, and MCP layers.
-- [x] **Fault Tolerance**: The `MeshCoordinator` implements quorum sensing to handle individual node failures.
-- [ ] **Unit Test Coverage**: Targeting > 80% coverage for signal processing utilities.
-- [x] **Static Analysis**: All core logic adheres to safety-critical Python/Rust standards.
+## 1. NASA-STD-8739.8 (Yazılım Güvencesi)
+- [x] **Modüler Mimari**: Sistemler SAL, EPE ve MCP katmanlarına ayrıştırılmıştır.
+- [x] **Hata Toleransı**: `MeshCoordinator`, bireysel düğüm arızalarını yönetmek için çoğunluk algılama (quorum sensing) uygular.
+- [ ] **Birim Test Kapsamı**: Sinyal işleme yardımcı araçları için > %80 kapsam hedeflenmektedir.
+- [x] **Statik Analiz**: Tüm çekirdek mantık, güvenlik kritik Python/Rust standartlarına uygundur.
 
-## 2. ESA-PSS-01 (Planetary Protection)
-- [x] **Sterility Heartbeat**: Each telemetry packet includes a `SterilityHash` (SHA-256) to verify the biological isolation state of the node.
-- [x] **Data Integrity**: Cryptographic signing of "Life Detected" events to prevent telemetry spoofing.
-- [x] **Decontamination**: Software-level interlocks prevent sensor exposure if sterility checks fail.
+## 2. ESA-PSS-01 (Gezegensel Koruma)
+- [x] **Sterilite Kalp Atışı**: Her telemetri paketi, düğümün biyolojik izolasyon durumunu doğrulamak için bir `SterilityHash` (SHA-256) içerir.
+- [x] **Veri Bütünlüğü**: Telemetri sahteciliğini önlemek için "Yaşam Tespit Edildi" olaylarının kriptografik imzalanması.
+- [x] **Dekontaminasyon**: Yazılım düzeyindeki kilitler, sterilite kontrolleri başarısız olursa sensör maruziyetini önler.
 
-## 3. Data Archiving (PDS4)
-The `DataLogger` is designed to be compatible with NASA's Planetary Data System (PDS) archive formats:
-- **XML/JSON Metadata**: Captures sensor state and environmental context.
-- **CSV Telemetry**: High-resolution spectral data for ground-based re-analysis.
+## 3. Veri Arşivleme (PDS4)
+`DataLogger`, NASA'nın Gezegensel Veri Sistemi (PDS) arşiv formatlarıyla uyumlu olacak şekilde tasarlanmıştır:
+- **XML/JSON Meta Verileri**: Sensör durumunu ve çevresel bağlamı yakalar.
+- **CSV Telemetri**: Yer tabanlı yeniden analiz için yüksek çözünürlüklü spektral veriler.
