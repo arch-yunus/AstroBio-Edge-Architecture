@@ -1,0 +1,30 @@
+payload_name: "AstroBio-X1-Integrated"
+version: "1.0.0"
+manufacturer: "Feza-X Labs"
+
+sensors:
+  - id: "raman_01"
+    type: "Raman Spectrometer"
+    wavelength_range: [400, 1000]
+    resolution: 0.5
+    power_draw: "15W"
+    interface: "SPI/LVDS"
+  
+  - id: "nir_01"
+    type: "Near-Infrared (NIR) Sensor"
+    wavelength_range: [900, 2500]
+    resolution: 2.0
+    power_draw: "8W"
+    interface: "I2C"
+
+  - id: "cam_01"
+    type: "Microscopic Imager"
+    magnification: "100x"
+    resolution: "2048x2048"
+    power_draw: "12W"
+    interface: "MIPI CSI-2"
+
+edge_compute:
+  target: "RISC-V PolarFire SoC"
+  memory_requirement: "4GB LPDDR4"
+  operating_temp: [-55, 125]
