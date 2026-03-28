@@ -20,16 +20,39 @@ Geleneksel uzay görevleri, veri analizi için yüksek gecikmeli yer bağlantıl
 
 ---
 
-## 🏗️ Sistem Mimarisi
+## 🏗️ Sistem Mimarisi ve Teknik Derinlik
 
-Mimari üç ana katmana ayrılmıştır:
+AstroBio-Edge sistemi, **Hata Toleranslı Dağıtık Hesaplama** prensipleri üzerine inşa edilmiştir.
 
-1.  **Sensör Soyutlama Katmanı (SAL)**: Farklı astrobiyoloji yüklerinden gelen verileri standartlaştırır.
-2.  **Uç İşleme Motoru (EPE)**: RISC-V/ARM mimarilerinde çalışan yerelleştirilmiş ML modelleri ve sezgisel filtreler.
-3.  **Mesh İletişim Protokolü (MCP)**: Düşük bant genişliğinde bile dağıtık modüller arasında veri bütünlüğünü ve senkronizasyonu sağlar.
+### 1. Sensör Soyutlama Katmanı (SAL)
+SAL, ham spektroskopik veriyi işlemek için bir tampon bölge görevi görür. Farklı üreticilerin sensörlerini (Raman, NIR, Mossbauer) tek bir veri formatına indirger.
 
-> [!IMPORTANT]
-> Bu sistem, **Gezegensel Koruma Kategori IV** için tasarlanmış olup, yüksek analitik hassasiyeti korurken sıfır çapraz kontaminasyon sağlar.
+### 2. Uç İşleme Motoru (EPE)
+EPE, `src/utils/signal_processing.py` içerisinde tanımlanan algoritmaları kullanarak:
+- **Baseline Correction**: Spektrumdaki gürültü tabanını otomatik olarak temizler.
+- **Adaptive Peak Detection**: Dinamik eşik değerleri kullanarak biyolojik imzalara karşılık gelen spektral tepeleri yakalar.
+
+### 3. Mesh İletişim Protokolü (AMP-v1)
+AMP, `src/mesh_coordinator.py` tarafından yönetilir ve şu özellikleri sunar:
+- **Quorum Sensing (Çoğunluk Algılama)**: Bir biyolojik imza tespit edildiğinde, sürüdeki diğer düğümlerden doğrulama istenir. Bu, bireysel sensör hatalarından kaynaklı yanlış pozitifleri (False Positive) engeller.
+- **Carousel Routing**: Radyasyonun yoğun olduğu bölgelerde, mesajlar dinamik olarak en güvenli yoldan iletilir.
+
+---
+
+## 🛡️ Dayanıklılık ve Güvenlik (Resilience)
+
+Uzay ortamı, donanım üzerinde bit değişimleri (bit-flips) ve sensör gürültüsü gibi fiziksel zorluklar yaratır.
+
+- **Hata Enjeksiyonu (Fault Injection)**: `src/utils/fault_injector.py` modülü, sistemi radyasyon etkilerine karşı test etmek için kullanılır.
+- **Hata Modları Analizi**: [FAILURE_MODES.md](docs/FAILURE_MODES.md) dosyasında detaylandırılan stratejilerle sistemin sürekliliği sağlanır.
+
+---
+
+## 📊 Görselleştirme ve Raporlama
+
+Görev sonuçları iki seviyede izlenebilir:
+1.  **Terminal Analizi**: `src/utils/visualizer.py` ile spektral verilerin ASCII tabanlı hızlı önizlemesi yapılır.
+2.  **HTML Dashboard**: `src/utils/report_generator.py` ile tüm görev verileri profesyonel ve etkileşimli bir web paneline dönüştürülür.
 
 ---
 
@@ -38,51 +61,49 @@ Mimari üç ana katmana ayrılmıştır:
 ```tree
 .
 ├── src/            # Çekirdek işleme mantığı ve uç sistemler
-├── docs/           # Teknik şartnameler ve uyumluluk belgeleri
-├── hardware/       # PCB tasarımları ve sensör şemaları
-├── simulations/    # Testler için dijital ikiz ortamlar
-├── models/         # Biyolojik imza tespiti için ML modelleri
-├── CHANGELOG.md    # Versiyon takibi
+│   ├── utils/      # Sinyal işleme, hata enjeksiyonu, raporlama
+├── docs/           # Mimari, Protokoller ve Uyumluluk belgeleri
+├── hardware/       # Sensör konfigürasyonları ve şemalar
+├── simulations/    # Çok düğümlü görev simülasyonları
+├── models/         # Biyolojik imza tanımlama modelleri
+├── tests/          # Mantıksal doğrulama testleri
+├── CHANGELOG.md    # Sürüm geçmişi
 └── LICENSE         # MIT Lisansı
 ```
 
 ---
 
-## 🛠️ Teknik Yığın
+## 📡 Kullanım Kılavuzu
 
-- **Diller**: Rust (Güvenlik kritik), Python (Veri Bilimi), C++ (Gömülü Sürücüler)
-- **Çerçeveler**: micro-ML, RTOS (FreeRTOS/Zephyr), Protocol Buffers
-- **Donanım Hedefleri**: RISC-V (PolarFire SoC), ARM Cortex-M7
-- **Standartlar**: CCSDS (İletişim), NASA-STD-8739.8 (Yazılım Güvencesi)
-
----
-
-## 📡 Kurulum ve Kullanım
-
-### Ön Koşullar
-- Python 3.10+
-- Rust Araç Zinciri
-- Hedef donanım için çapraz derleyici (Cross-compiler)
-
-### Yerel Simülasyon
+### 1. Kurulum
 ```bash
-# Depoyu klonlayın
 git clone https://github.com/arch-yunus/AstroBio-Edge-Architecture.git
+pip install numpy  # Gerekli bağımlılık
+```
 
-# Simülasyon ortamını hazırlayın
-python simulations/setup_env.py
+### 2. Simülasyon Çalıştırma
+Sürü halindeki düğümlerin koordinasyonunu simüle etmek için:
+```bash
+python simulations/multinode_sim.py
+```
+
+### 3. Rapor Üretme
+Görev sonrası görsel dashboard oluşturmak için:
+```bash
+python src/utils/report_generator.py
 ```
 
 ---
 
-## 🤝 Katkıda Bulunma
-
-Araştırmacıları, gezegen bilimcileri ve yazılım mühendislerini bekliyoruz. Lütfen yakında eklenecek olan `CONTRIBUTING.md` dosyasını inceleyin.
+## 📜 Gelecek Yol Haritası
+- [ ] Gömülü Rust (no_std) implementasyonu.
+- [ ] Gerçek zamanlı spektrometre donanım entegrasyonu.
+- [ ] Derin öğrenme tabanlı biosignature sınıflandırıcı.
 
 ---
 
-## ⚖️ Lisans
+## 🤝 İletişim & Katkıda Bulunma
 
-MIT Lisansı altında dağıtılmaktadır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
+Gezegen bilimcileri ve uzay sistemleri mühendislerinin katkılarına açığız.
 
-**İletişim**: [Yunus] - GitHub: [@arch-yunus](https://github.com/arch-yunus)
+**Geliştirici**: [Yunus] - GitHub: [@arch-yunus](https://github.com/arch-yunus)

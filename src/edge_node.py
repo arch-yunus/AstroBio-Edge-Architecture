@@ -9,22 +9,27 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.utils.signal_processing import remove_background, detect_peaks, calculate_snr
 from simulations.environment_simulator import PlanetSimulator
 from models.biosignature_detector import BiosignatureDetector
+from src.utils.fault_injector import FaultInjector
 
 class EdgeNode:
     def __init__(self, node_id="Astro-Edge-01"):
         self.node_id = node_id
         self.simulator = PlanetSimulator()
         self.detector = BiosignatureDetector()
+        self.fault_injector = FaultInjector()
         self.logs = []
 
     def run_discovery_cycle(self):
         print(f"[{self.node_id}] Keşif döngüsü başlatılıyor...")
         
-        # 1. Data Acquisition
+        # 1. Veri Edinimi (Simülasyondan)
         raw_data = self.simulator.generate_spectrum(has_biosignature=True)
         
-        # 2. Pre-processing
-        processed_data = remove_background(raw_data)
+        # 1.1 Hata Enjeksiyonu (Uzay gürültüsü ve Radyasyon simülasyonu)
+        corrupted_data = self.fault_injector.corrupt_signal(raw_data)
+        
+        # 2. Ön işleme
+        processed_data = remove_background(corrupted_data)
         
         # 3. Peak Detection
         peaks = detect_peaks(processed_data, threshold=0.1)

@@ -286,5 +286,149 @@
         "confidence": 0.85
       }
     }
+  },
+  {
+    "timestamp": 1774730910.9716024,
+    "node_id": "Astro-Edge-01",
+    "snr": 4.085744978216989,
+    "is_positive": true,
+    "confidence": 1.0,
+    "findings": {
+      "Amide-A": {
+        "peak_index": 390,
+        "intensity": 0.3076977848782,
+        "confidence": 0.85
+      },
+      "Amide-B": {
+        "peak_index": 328,
+        "intensity": 0.2855522527734995,
+        "confidence": 0.85
+      },
+      "UV-Res": {
+        "peak_index": 210,
+        "intensity": 0.24258105567733274,
+        "confidence": 0.85
+      }
+    }
+  },
+  {
+    "timestamp": 1774730910.9720984,
+    "node_id": "Astro-Edge-02",
+    "snr": 4.2145068892182,
+    "is_positive": true,
+    "confidence": 1.0,
+    "findings": {
+      "Amide-A": {
+        "peak_index": 393,
+        "intensity": 0.27567265847807504,
+        "confidence": 0.85
+      },
+      "Amide-B": {
+        "peak_index": 329,
+        "intensity": 0.305705085746911,
+        "confidence": 0.85
+      },
+      "UV-Res": {
+        "peak_index": 180,
+        "intensity": 0.10277740773346822,
+        "confidence": 0.85
+      }
+    }
+  },
+  {
+    "timestamp": 1774730910.9726439,
+    "node_id": "Astro-Edge-03",
+    "snr": 5.032366573437301,
+    "is_positive": true,
+    "confidence": 1.0,
+    "findings": {
+      "Amide-A": {
+        "peak_index": 391,
+        "intensity": 0.36429471786194156,
+        "confidence": 0.85
+      },
+      "Amide-B": {
+        "peak_index": 331,
+        "intensity": 0.2550776744063769,
+        "confidence": 0.85
+      },
+      "UV-Res": {
+        "peak_index": 213,
+        "intensity": 0.17769987488459277,
+        "confidence": 0.85
+      }
+    }
+  },
+  {
+    "timestamp": 1774730910.9726439,
+    "node_id": "Astro-Edge-01",
+    "snr": 4.166403983677031,
+    "is_positive": true,
+    "confidence": 1.0,
+    "findings": {
+      "Amide-A": {
+        "peak_index": 390,
+        "intensity": 0.28184387979108594,
+        "confidence": 0.85
+      },
+      "Amide-B": {
+        "peak_index": 329,
+        "intensity": 0.2644462903344167,
+        "confidence": 0.85
+      },
+      "UV-Res": {
+        "peak_index": 211,
+        "intensity": 0.14270443268394395,
+        "confidence": 0.85
+      }
+    }
+  },
+  {
+    "timestamp": 1774730910.973651,
+    "node_id": "Astro-Edge-02",
+    "snr": 4.909028166595705,
+    "is_positive": true,
+    "confidence": 1.0,
+    "findings": {
+      "Amide-A": {
+        "peak_index": 391,
+        "intensity": 0.3518307885726284,
+        "confidence": 0.85
+      },
+      "Amide-B": {
+        "peak_index": 329,
+        "intensity": 0.2405092046602867,
+        "confidence": 0.85
+      },
+      "UV-Res": {
+        "peak_index": 211,
+        "intensity": 0.15744723273678154,
+        "confidence": 0.85
+      }
+    }
+  },
+  {
+    "timestamp": 1774730910.973651,
+    "node_id": "Astro-Edge-03",
+    "snr": 4.240897509279765,
+    "is_positive": true,
+    "confidence": 1.0,
+    "findings": {
+      "Amide-A": {
+        "peak_index": 393,
+        "intensity": 0.30200045505740813,
+        "confidence": 0.85
+      },
+      "Amide-B": {
+        "peak_index": 331,
+        "intensity": 0.25050773671117144,
+        "confidence": 0.85
+      },
+      "UV-Res": {
+        "peak_index": 212,
+        "intensity": 0.2556673893521703,
+        "confidence": 0.85
+      }
+    }
   }
 ]
