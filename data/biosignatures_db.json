@@ -1,0 +1,34 @@
+{
+  "biosignatures": [
+    {
+      "name": "Glisin",
+      "type": "Amino Asit",
+      "peaks": [510, 890],
+      "description": "En basit amino asitlerden biri, protein yapı taşı."
+    },
+    {
+      "name": "Alanin",
+      "type": "Amino Asit",
+      "peaks": [620, 750],
+      "description": "Karbon bazlı yaşam için kritik bir amino asit."
+    },
+    {
+      "name": "Klorofil-A",
+      "type": "Pigment",
+      "peaks": [430, 660],
+      "description": "Fotosentetik yaşamın güçlü bir göstergesi."
+    },
+    {
+      "name": "Beta-Karoten",
+      "type": "Pigment",
+      "peaks": [450, 480],
+      "description": "Ultraviyole koruma sağlayan organik pigment."
+    },
+    {
+      "name": "Metan-Ojenik-Marker",
+      "type": "Metabolic Product",
+      "peaks": [840, 930],
+      "description": "Aktif biyolojik süreçlerin yan ürünü."
+    }
+  ]
+}

@@ -2,6 +2,16 @@
 
 Bu projedeki tüm önemli değişiklikler bu dosyada belgelenecektir.
 
+## [0.4.0] - 2026-03-29
+### Eklendi
+- **FDIR Sistemi**: Otonom Hata Algılama, İzole Etme ve Kurtarma protokolleri.
+- **Biyolojik İmza Veritabanı**: JSON tabanlı spektral kütüphane (Amino asitler, pigmentler).
+- **Termal Yönetim (Hardware Simulation)**: İşlemci yükü ve çevre koşullarına bağlı sıcaklık simülasyonu.
+- **Görev Kontrol Merkezi (Base Station)**: Otonom düğüm koordinasyonu ve merkezi raporlama.
+- **Merkezi Misyon Yürütücü**: `run_mission.py` ile tüm sistemlerin entegre simülasyonu.
+- **Gelişmiş Raporlama**: Modern HTML dashboard ve detaylı JSON görev raporları.
+- **Birim Testleri**: Kritik sistem bileşenleri için kapsamlı test paketi.
+
 ## [0.3.0] - 2026-03-28
 ### Eklendi
 - **Türkçe Dil Desteği**: Tüm dökümantasyon, terminal çıktıları ve log sistemleri tamamen Türkçe'ye yerelleştirildi.

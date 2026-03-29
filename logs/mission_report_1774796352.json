@@ -1,0 +1,31 @@
+{
+    "mission_duration": 1.950139045715332,
+    "total_nodes_reporting": 3,
+    "total_data_packets": 6,
+    "confirmed_biosignatures": 1,
+    "summary": "Görev başarıyla tamamlandı.",
+    "detailed_findings": [
+        {
+            "timestamp": 1774796350.899645,
+            "node_id": "Astro-Edge-01",
+            "health": "NOMİNAL",
+            "temperature": "27.6C",
+            "battery": "%97.5",
+            "snr": 4.6953973894299255,
+            "is_positive": true,
+            "confidence": 0.95,
+            "findings": {
+                "Klorofil-A": {
+                    "type": "Pigment",
+                    "match_ratio": "%100",
+                    "description": "Fotosentetik yaşamın güçlü bir göstergesi."
+                },
+                "Metan-Ojenik-Marker": {
+                    "type": "Metabolic Product",
+                    "match_ratio": "%100",
+                    "description": "Aktif biyolojik süreçlerin yan ürünü."
+                }
+            }
+        }
+    ]
+}

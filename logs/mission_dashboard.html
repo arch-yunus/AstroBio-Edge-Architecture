@@ -3,324 +3,65 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>AstroBio-Edge Görev Paneli</title>
+    <title>AstroBio-Edge | Görev Kontrol Paneli</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; padding: 20px; }
-        .header { border-bottom: 2px solid #334155; padding-bottom: 10px; margin-bottom: 20px; }
-        .card { background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #3b82f6; }
-        .positive { border-left-color: #22c55e; }
-        .negative { border-left-color: #ef4444; }
-        .stat { font-weight: bold; color: #94a3b8; }
-        h1 { color: #60a5fa; }
+        :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #3b82f6; --success: #22c55e; --error: #ef4444; --warning: #f59e0b; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 40px; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { border-bottom: 2px solid #334155; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .card { background: var(--card); padding: 25px; border-radius: 12px; margin-bottom: 20px; border-left: 6px solid var(--accent); transition: transform 0.2s; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .card:hover { transform: translateY(-3px); }
+        .positive { border-left-color: var(--success); }
+        .negative { border-left-color: var(--error); }
+        .warning { border-left-color: var(--warning); }
+        .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        .badge-pos { background: var(--success); color: white; }
+        .badge-neg { background: #475569; color: white; }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+        .stat-item { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; }
+        .stat-label { display: block; font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; }
+        .stat-value { font-size: 1.1rem; font-weight: bold; }
+        h1 { color: #60a5fa; margin: 0; }
+        .timestamp { color: #94a3b8; font-family: monospace; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🌌 AstroBio-Edge Görev Kontrol Paneli</h1>
-        <p>Gezegen: Mars | Görev: Keşif v1.0</p>
-    </div>
-    <div class="content">
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774731159.6564312<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 3.93<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.2709759092467553, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.22533912779621335, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.18194569647042239, "confidence": 0.85}}</small>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>🌌 AstroBio-Edge Architecture</h1>
+                <p>Universal Class Edge Computing Node Coordination</p>
+            </div>
+            <div style="text-align: right;">
+                <span class="badge" style="background:var(--accent)">MİSYON AKTİF</span><br>
+                <small class="timestamp">Üretim: 2026-03-29 17:59:12</small>
+            </div>
         </div>
         
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774731159.6549113<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.08<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.28941474221769015, "confidence": 0.85}, "Amide-B": {"peak_index": 328, "intensity": 0.27071950091422053, "confidence": 0.85}, "UV-Res": {"peak_index": 212, "intensity": 0.20037191998748494, "confidence": 0.85}}</small>
+        <div class="content">
+            
+            <div class="card positive">
+                <div style="display: flex; justify-content: space-between;">
+                    <strong>Düğüm: Astro-Edge-01</strong>
+                    <span class="badge badge-pos">
+                        POZİTİF BULGU
+                    </span>
+                </div>
+                
+                <div class="stat-grid">
+                    <div class="stat-item"><span class="stat-label">Sağlık</span><span class="stat-value">NOMİNAL</span></div>
+                    <div class="stat-item"><span class="stat-label">Sıcaklık</span><span class="stat-value">27.6C</span></div>
+                    <div class="stat-item"><span class="stat-label">Batarya</span><span class="stat-value">%97.5</span></div>
+                    <div class="stat-item"><span class="stat-label">Güven Oranı</span><span class="stat-value">%95.0</span></div>
+                </div>
+
+                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                    <small style="color: #94a3b8;">Detaylı Bulgular:</small><br>
+                    <code style="color: #60a5fa;">{"Klorofil-A": {"type": "Pigment", "match_ratio": "%100", "description": "Fotosentetik yaşamın güçlü bir göstergesi."}, "Metan-Ojenik-Marker": {"type": "Metabolic Product", "match_ratio": "%100", "description": "Aktif biyolojik süreçlerin yan ürünü."}}</code>
+                </div>
+            </div>
+            
         </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774731159.6549113<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 3.61<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.2588629960541793, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.2555962392124963, "confidence": 0.85}, "UV-Res": {"peak_index": 209, "intensity": 0.20979074740248088, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774731159.6549113<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 3.85<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 386, "intensity": 0.26905405407284555, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.22693373835803565, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.1755592701338841, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774731159.6549113<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.61<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 387, "intensity": 0.29801138850263087, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.2680450358244799, "confidence": 0.85}, "UV-Res": {"peak_index": 207, "intensity": 0.3393242387192343, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774731159.6549113<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 3.75<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 387, "intensity": 0.26311890368246393, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.2180793622483984, "confidence": 0.85}, "UV-Res": {"peak_index": 208, "intensity": 0.18022562703695372, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774731141.7856371<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.07<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 395, "intensity": 0.2893932211571998, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.2417746380351135, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.21360953369962232, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774731141.7845633<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.02<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.28529215442688594, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.25518657393494104, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.25174337614020253, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774731141.7845633<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.86<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.341289281557413, "confidence": 0.85}, "Amide-B": {"peak_index": 333, "intensity": 0.23118517808516964, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.2228871920819651, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774731141.7845633<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 5.61<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.3982693785491898, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.272293403231891, "confidence": 0.85}, "UV-Res": {"peak_index": 212, "intensity": 0.15942315942378021, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774731141.784107<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.47<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 392, "intensity": 0.3267120309965528, "confidence": 0.85}, "Amide-B": {"peak_index": 327, "intensity": 0.2928347714296601, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.15180413419078442, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774731141.7831016<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.48<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.33521833441779403, "confidence": 0.85}, "Amide-B": {"peak_index": 332, "intensity": 0.2956014292364485, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.19434279958179368, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774730910.973651<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.24<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 393, "intensity": 0.30200045505740813, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.25050773671117144, "confidence": 0.85}, "UV-Res": {"peak_index": 212, "intensity": 0.2556673893521703, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774730910.973651<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.91<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.3518307885726284, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.2405092046602867, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.15744723273678154, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774730910.9726439<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.17<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.28184387979108594, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.2644462903344167, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.14270443268394395, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774730910.9726439<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 5.03<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.36429471786194156, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.2550776744063769, "confidence": 0.85}, "UV-Res": {"peak_index": 213, "intensity": 0.17769987488459277, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774730910.9720984<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.21<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 393, "intensity": 0.27567265847807504, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.305705085746911, "confidence": 0.85}, "UV-Res": {"peak_index": 180, "intensity": 0.10277740773346822, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774730910.9716024<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.09<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.3076977848782, "confidence": 0.85}, "Amide-B": {"peak_index": 328, "intensity": 0.2855522527734995, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.24258105567733274, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774730657.232488<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.78<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.24817963453445163, "confidence": 0.85}, "Amide-B": {"peak_index": 328, "intensity": 0.20363076562599444, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.1720424301477703, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774730657.2319667<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.61<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.24176357337684798, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.2140770351999559, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.1620854744442517, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774730657.2319667<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.90<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.25781921236365707, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.21924514860720662, "confidence": 0.85}, "UV-Res": {"peak_index": 209, "intensity": 0.15358117086731055, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774730657.2313406<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.82<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.2521242778655651, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.21151804134603663, "confidence": 0.85}, "UV-Res": {"peak_index": 212, "intensity": 0.14696947704431473, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774730657.2313406<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.68<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.24229464591334396, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.2090353520047873, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.16351908244694274, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774730657.230813<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.66<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.24299901423714276, "confidence": 0.85}, "Amide-B": {"peak_index": 329, "intensity": 0.22030526924897256, "confidence": 0.85}, "UV-Res": {"peak_index": 209, "intensity": 0.16124546724513522, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774728609.7289972<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.77<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.24699990238765845, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.21550720732013606, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.15279638736143475, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774728609.7289972<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.61<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 391, "intensity": 0.24456564732978542, "confidence": 0.85}, "Amide-B": {"peak_index": 331, "intensity": 0.21544707414199077, "confidence": 0.85}, "UV-Res": {"peak_index": 209, "intensity": 0.16366343608243647, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774728609.7289972<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.54<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.2373461442980221, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.21602715383750765, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.14976477917515332, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-03</strong><br>
-            <span class="stat">Zaman:</span> 1774728609.7289972<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.89<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 389, "intensity": 0.2579874058587304, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.21944113675175175, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.16557505245772308, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-02</strong><br>
-            <span class="stat">Zaman:</span> 1774728609.728346<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.80<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 388, "intensity": 0.25294640476760505, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.2330543110908529, "confidence": 0.85}, "UV-Res": {"peak_index": 211, "intensity": 0.1563539303949099, "confidence": 0.85}}</small>
-        </div>
-        
-        <div class="card positive">
-            <strong>Düğüm ID: Astro-Edge-01</strong><br>
-            <span class="stat">Zaman:</span> 1774728609.727821<br>
-            <span class="stat">Sinyal/Gürültü Oranı (SNR):</span> 4.72<br>
-            <span class="stat">Güven Oranı:</span> 1.00<br>
-            <span class="stat">Sonuç:</span> TESPİT EDİLDİ<br>
-            <hr style="border: 0.5px solid #334155;">
-            <small>Bulgular: {"Amide-A": {"peak_index": 390, "intensity": 0.24561342013169082, "confidence": 0.85}, "Amide-B": {"peak_index": 330, "intensity": 0.21681897113293352, "confidence": 0.85}, "UV-Res": {"peak_index": 210, "intensity": 0.1680786447221721, "confidence": 0.85}}</small>
-        </div>
-        
     </div>
 </body>
 </html>

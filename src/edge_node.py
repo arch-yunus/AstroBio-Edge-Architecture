@@ -12,6 +12,8 @@ from models.biosignature_detector import BiosignatureDetector
 from src.utils.fault_injector import FaultInjector
 from models.biosignature_nn import BiosignatureNN
 from hardware.power_manager import PowerManager
+from hardware.thermal_manager import ThermalManager
+from src.utils.fdir import FDIR
 
 class EdgeNode:
     def __init__(self, node_id="Astro-Edge-01"):
@@ -20,56 +22,75 @@ class EdgeNode:
         self.detector = BiosignatureDetector()
         self.nn_classifier = BiosignatureNN()
         self.power_manager = PowerManager()
+        self.thermal_manager = ThermalManager()
+        self.fdir = FDIR(node_id)
         self.fault_injector = FaultInjector()
         self.logs = []
 
-    def run_discovery_cycle(self):
+    def run_discovery_cycle(self, sun_exposure=True):
         print(f"[{self.node_id}] Keşif döngüsü başlatılıyor...")
         
-        # 0. Enerji Tüketimi
+        # 1. Donanım Durum Güncellemesi (Güç & Termal)
         current_battery = self.power_manager.consume_energy()
+        current_temp = self.thermal_manager.update_temperature(cpu_load=0.4, sun_exposure=sun_exposure)
         
-        # 1. Veri Edinimi (Simülasyondan)
+        # 2. Sağlık Kontrolü (FDIR)
+        telemetry = {
+            "battery": f"%{current_battery:.1f}",
+            "temperature": current_temp,
+            "snr": 15.0 # Varsayılan baz SNR
+        }
+        health_status, recommendations = self.fdir.check_health(telemetry)
+        
+        if health_status != "NOMİNAL":
+            print(f"[{self.node_id}] FDIR UYARISI: Durum {health_status}. Öneriler: {recommendations}")
+            actions = self.fdir.execute_recovery(recommendations)
+            for action in actions:
+                print(f"[{self.node_id}] KURTARMA: {action}")
+
+        # 3. Veri Edinimi (Simülasyondan)
         raw_data = self.simulator.generate_spectrum(has_biosignature=True)
         
-        # 1.1 Hata Enjeksiyonu (Uzay gürültüsü ve Radyasyon simülasyonu)
+        # 3.1 Hata Enjeksiyonu (Uzay gürültüsü ve Radyasyon simülasyonu)
         corrupted_data = self.fault_injector.corrupt_signal(raw_data)
         
-        # 2. Ön işleme
+        # 4. Ön işleme ve Analiz
         processed_data = remove_background(corrupted_data)
-        
-        # 3. Peak Detection
         peaks = detect_peaks(processed_data, threshold=0.1)
         snr = calculate_snr(processed_data, peaks)
         
-        # 4. Biosignature Analysis
+        # 5. Biosignature Analysis (Hibrit: Kural Tabanlı + AI)
         results = self.detector.analyze_spectrum(self.simulator.wavelengths, processed_data, peaks)
-        
-        # 5. AI/ML Klasifikasyon (Derin Öğrenme Desteği)
         ai_confidence = self.nn_classifier.classify_organic(peaks)
         
-        # 6. Sonuç İşleme (Hibrit Model)
+        # 6. Sonuç İşleme
+        combined_confidence = (results["confidence"] + ai_confidence) / 2.0
+        
         event = {
             "timestamp": time.time(),
             "node_id": self.node_id,
+            "health": health_status,
+            "temperature": f"{current_temp:.1f}C",
+            "battery": f"%{current_battery:.1f}",
             "snr": snr,
-            "is_positive": results["is_positive"],
-            "confidence": (results["confidence"] + ai_confidence) / 2.0,
-            "findings": results["findings"],
-            "battery": f"%{current_battery:.1f}"
+            "is_positive": results["is_positive"] and combined_confidence > 0.5,
+            "confidence": combined_confidence,
+            "findings": results["findings"]
         }
         
         self.logs.append(event)
         
-        if results["is_positive"]:
-            print(f"[{self.node_id}] UYARI: BİYOLOJİK İMZA TESPİT EDİLDİ! Güven oranı: {results['confidence']:.2f}")
+        if event["is_positive"]:
+            print(f"[{self.node_id}] !!! KRİTİK TESPİT !!! Güven: {combined_confidence:.2f}")
+            for name, info in results["findings"].items():
+                print(f"   -> {name} ({info['type']}): {info['match_ratio']} eşleşme")
         else:
-            print(f"[{self.node_id}] Önemli bir biyolojik imza bulunamadı. Bölge taraması tamamlandı.")
+            print(f"[{self.node_id}] Bölge taraması tamamlandı, biyosinyal bulunamadı.")
         
         return event
 
 if __name__ == "__main__":
     node = EdgeNode()
-    for _ in range(3):
-        node.run_discovery_cycle()
-        time.sleep(1)
+    for i in range(5):
+        node.run_discovery_cycle(sun_exposure=(i < 3))
+        time.sleep(0.5)
