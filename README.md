@@ -1,67 +1,98 @@
-# 🌌 AstroBio-Edge-Architecture
+# 🌌 AstroBio-Edge-Architecture: Egemenlik Sınıfı (v0.5.0)
 
 ![AstroBio-Edge Banner](assets/banner.png)
 
+[![Sürüm: v0.5.0](https://img.shields.io/badge/S%C3%BCr%C3%BCm-v0.5.0%20Egemenlik-blueviolet.svg)](#)
 [![Lisans: MIT](https://img.shields.io/badge/Lisans-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Görev: TUA AstroHackathon](https://img.shields.io/badge/G%C3%B6rev-TUA%20AstroHackathon-blue.svg)](https://tua.gov.tr)
-[![Güvenlik: ESA-PSS-01](https://img.shields.io/badge/G%C3%BCvenlik-ESA--PSS--01-green.svg)](#)
+[![Güvenlik: NASA-STD-8739.8](https://img.shields.io/badge/G%C3%BCvenlik-NASA--STD--8739.8-red.svg)](#)
+[![Uyum: ESA Kategori IV](https://img.shields.io/badge/Uyum-ESA%20Kat%20IV-green.svg)](#)
 
-**AstroBio-Edge-Architecture**, merkeziyetsiz astrobiyolojik veri işleme için tasarlanmış yeni nesil bir teknik ekosistemdir. Keşif noktasında uç bilişim (edge computing) kullanarak, ekstrem ortamlarda gerçek zamanlı biyolojik imza tespiti ve otonom yük yönetimi sağlar.
-
----
-
-## 🚀 Genel Bakış
-
-Geleneksel uzay görevleri, veri analizi için yüksek gecikmeli yer bağlantılarına dayanır. **AstroBio-Edge**, keşif esnasında kritik biyolojik sinyallerin telemetri darboğazlarından önce tanımlanmasını ve önceliklendirilmesini sağlayan "Sensörde Hesaplama" modelini uygular.
-
-### Temel Sütunlar
-- **Merkeziyetsiz Zeka**: Analitik iş yüklerini paylaşan eşler arası (P2P) uç düğümler (edge nodes).
-- **Yapay Zeka Destekli Analiz**: Derin öğrenme tabanlı biyolojik imza sınıflandırması.
-- **Dinamik Enerji Yönetimi**: Uzun süreli görevler için akıllı güç tasarrufu algoritmaları.
-- **ESA/NASA Uyumluluğu**: Gezegensel koruma protokollerine (Kategori IV) tam uyumluluk.
+**AstroBio-Edge-Architecture**, merkeziyetsiz astrobiyolojik veri işleme ve otonom sürü zekası (Swarm Intelligence) için tasarlanmış, "Evrensel Sınıf" (Universal-Class) bir teknik ekosistemdir. Proje, keşif noktasında uç bilişim (edge computing) kullanarak, ekstrem uzay koşullarında gerçek zamanlı biyolojik imza tespiti, otonom FDIR (Hata Algılama ve Kurtarma) ve kriptografik veri bütünlüğü sağlar.
 
 ---
 
-## 🏗️ Sistem Mimarisi ve Teknik Derinlik
+## 🚀 Proje Vizyonu: Otonom Keşfin Geleceği
 
-AstroBio-Edge sistemi, **Hata Toleranslı Dağıtık Hesaplama** prensipleri üzerine inşa edilmiştir.
+Geleneksel uzay görevleri, veri analizi için yüksek gecikmeli yer bağlantılarına dayanır. **AstroBio-Edge**, keşif esnasında kritik biyolojik sinyallerin telemetri darboğazlarından önce tanımlanmasını sağlayan "Sensörde Hesaplama" modelini, **Sürü Zekası** ile birleştirir.
 
-### 1. Sensör Soyutlama Katmanı (SAL)
-SAL, ham spektroskopik veriyi işlemek için bir tampon bölge görevi görür. Farklı üreticilerin sensörlerini tek bir veri formatına indirger.
-
-### 2. Uç İşleme Motoru (EPE)
-EPE, spektral gürültü temizleme (Baseline Correction) ve adaptif tepe noktası tespiti (Adaptive Peak Detection) algoritmalarını koordine eder.
-
-### 3. Yapay Zeka Katmanı (Models/AI)
-`models/biosignature_nn.py` modülü, sinir ağı tabanlı bir sınıflandırıcı sunar. Yazılım, geleneksel sezgisel dedektör ile AI tabanlı sınıflandırıcıyı hibrit bir modelde birleştirerek güven oranını maksimize eder.
+### Anahtar Teknolojiler (v0.5.0 Egemenlik Sınıfı)
+- **Sürü Zekası (Swarm Intelligence)**: Düğümler arası dinamik konsensüs (Quorum Sensing).
+- **Adaptif Örnekleme**: Pozitif bulgu durumunda sürünün otomatik olarak yüksek hassasiyetli taramaya geçmesi.
+- **Kriptografik Bütünlük (SHA-256)**: NASA-STD-8739.8 uyumlu, değiştirilemez veri paketleri.
+- **Ekstrem Dayanıklılık**: Solar Flare (Güneş Patlaması) simülasyonu ve otonom hata kurtarma.
+- **Rich Mission Control**: Terminalde profesyonel, canlı görsel denetim masası.
 
 ---
 
-## ⚡ Donanım ve Performans Metrikleri
+## 🏗️ Teknik Mimari ve Sürü Koordinasyonu
 
-| Spesifikasyon | Değer | Açıklama |
-| :--- | :--- | :--- |
-| **CPU Hedefi** | ARM Cortex-M7 / RISC-V | Düşük güç tüketimli uç işlemciler. |
-| **RAM İhtiyacı** | < 256 KB | micro-ML optimizasyonu ile minimize edilmiş bellek kullanımı. |
-| **Tespit Süresi** | < 500 ms | Sinyal alımından karara kadar geçen süre. |
-| **Enerji Tasarrufu** | LBO Modu | Batarya %20 altına düştüğünde tasarruf modu aktivasyonu. |
+Sistem, **Merkeziyetsiz Dağıtık Hesaplama** prensipleri üzerine inşa edilmiştir. Aşağıdaki şema, bir biyolojik imza tespiti anında sürünün nasıl tepki verdiğini göstermektedir:
+
+```mermaid
+graph TD
+    A[Ham Spektrum Verisi] --> B{Uç Düğüm (Edge Node)}
+    B --> C[Gürültü Temizleme & SNR Analizi]
+    C --> D[Hibrit Dedektör: Kural + AI]
+    D --> E{Bulgu Pozitif mi?}
+    E -- Hayır --> F[Nominal Tarama Modu]
+    E -- Evet --> G[Sürüye Alarm Gönder]
+    G --> H[Sürü Koordinatörü (Mesh Coordinator)]
+    H --> I{Korum Sağlandı mı?}
+    I -- Evet --> J[ADAPTİF MOD: Yüksek Hassasiyetli Odaklanma]
+    I -- Hayır --> K[Ek Doğrulama İsteği]
+    J --> L[Base Station & Görev Kontrol Merkezi]
+    L --> M[Kriptografik Loglama (SHA-256)]
+```
 
 ---
 
-## 🛡️ Dayanıklılık ve Güvenlik (Resilience)
+## 🧬 Bilimsel Temeller ve Biyolojik İmza Tespiti
 
-Uzay ortamı, donanım üzerinde bit değişimleri (bit-flips) ve sensör gürültüsü gibi fiziksel zorluklar yaratır.
+Sistem, `data/biosignatures_db.json` üzerinden bilinen organik molekülleri tarar.
 
-- **Hata Enjeksiyonu**: `src/utils/fault_injector.py` modülü, sistemi radyasyon etkilerine karşı test eder.
-- **Konsensüs**: Sürü (Swarm), çoğunluk algılama algoritmaları ile bireysel hata yapan düğümleri izole eder.
+### Desteklenen Organik İşaretçiler
+- **Amino Asitler**: Glisin, Alanin (Protein yapı taşları).
+- **Pigmentler**: Klorofil-A, Beta-Karoten (Fotosentetik yaşam göstergeleri).
+- **Metabolik Ürünler**: Metan-ojenik Markerlar (Aktif biyolojik süreçler).
+
+### Hibrit Tespit Algoritması
+Sistem, klasik sezgisel (heuristic) yöntemlerle modern Sinir Ağlarını (NN) birleştirir:
+- **Sezgisel**: Spektral tepe noktası (Peak) eşleştirme ve SNR doğrulaması.
+- **AI/ML**: `models/biosignature_nn.py` ile organizma sınıflandırma (Confidence Score).
 
 ---
 
-## 📊 Görselleştirme ve Raporlama
+## 🛡️ Uzay Dayanıklılığı ve FDIR Protokolleri
 
-Görev sonuçları iki seviyede izlenebilir:
-1.  **Terminal Analizi**: `src/utils/visualizer.py` ile ASCII tabanlı önizleme.
-2.  **HTML Dashboard**: `src/utils/report_generator.py` ile etkileşimli görev paneli.
+Uzay ortamındaki ekstrem radyasyon (Solar Flare) ve donanım arızalarına karşı sistem otonom olarak hayatta kalır.
+
+- **FDIR (Fault Detection, Isolation, and Recovery)**:
+    - **Batarya**: %20 altında "Düşük Güç Modu", %10 altında "Kritik Tasarruf".
+    - **Termal**: İşlemci ısındığında aktif radyatör kontrolü ve frekans düşürme.
+- **Solar Flare Simülasyonu**: `scripts/stress_tester.py` ile %100 radyasyon yükü altında sistem kararlılığı test edilmiştir.
+
+---
+
+## 📊 Misyon Kontrolü ve Kullanım
+
+### Kurulum
+```bash
+# Bağımlılıkları yükleyin
+pip install numpy rich
+
+# Misyonu başlatın (3 Düğüm, 5 Döngü)
+python run_mission.py 3 5
+```
+
+### Stres Testi (FMEA Analizi)
+Sistemi ekstrem koşullarda test etmek ve `docs/STRESS_TEST_REPORT.md` dosyasını oluşturmak için:
+```bash
+python scripts/stress_tester.py
+```
+
+### Dashboard (Gösterge Paneli)
+Misyon sırasında `rich` kütüphanesi ile üretilen canlı terminal paneli, tüm düğüm durumlarını ve bütünlük hash'lerini (SHA-256) anlık olarak sunar.
 
 ---
 
@@ -69,27 +100,25 @@ Görev sonuçları iki seviyede izlenebilir:
 
 ```tree
 .
-├── src/            # Çekirdek işleme mantığı ve uç sistemler
-├── docs/           # Mimari ve Uyumluluk belgeleri
-├── assets/         # Banner ve teknik çizimler
-├── hardware/       # Güç yönetimi ve sensör konfigürasyonları
-├── simulations/    # Çok düğümlü görev simülasyonları
-├── models/         # Sezgisel ve AI tabanlı dedektör modelleri
-├── tests/          # Mantıksal doğrulama testleri
-└── LICENSE         # MIT Lisansı
+├── src/                # Çekirdek işleme mantığı (Edge, Mesh, Base Station)
+│   ├── utils/          # FDIR, Logger, Signal Processing, Dashboard
+├── simulations/        # Sentetik gezegen yüzeyi ve veri üretim simülatörleri
+├── models/             # Biyolojik imza kütüphanesi ve AI sınıflandırıcılar
+├── hardware/           # Güç ve Termal yönetim mantığı
+├── data/               # Biosignatures JSON veritabanı
+├── docs/               # Mimari, Uyumluluk ve Stres Testi Raporları
+├── tests/              # Mantıksal ve sistem birim testleri
+└── run_mission.py      # Ana misyon yürütücü (Entry Point)
 ```
 
 ---
 
-## 📜 Gelecek Yol Haritası
-- [ ] Gömülü Rust (no_std) implementasyonu.
-- [ ] Derin öğrenme modellerinin donanım hızlandırıcı (NPU/DSP) optimizasyonu.
-- [ ] Sürü bazlı otonom rota planlama.
+## 🤝 Katkıda Bulunma ve Ekip
+
+Bu proje, **TUA AstroHackathon** ve gelecekteki **TEKNOFEST** görevleri için bir temel teşkil etmektedir.
+
+- **Geliştirici**: [Yunus] - GitHub: [@arch-yunus](https://github.com/arch-yunus)
+- **Vizyon**: Milli Uzay Programı ve derin uzay keşiflerinde otonom hakimiyet.
 
 ---
-
-## 🤝 Katkıda Bulunma
-
-Gezegen bilimcileri ve uzay sistemleri mühendislerinin katkılarına açığız.
-
-**Geliştirici**: [Yunus] - GitHub: [@arch-yunus](https://github.com/arch-yunus)
+*Bu proje MIT Lisansı ile korunmaktadır. Proje çıktıları T.C. Milli Uzay Programı hedefleriyle uyumlu olarak geliştirilmiştir.*
