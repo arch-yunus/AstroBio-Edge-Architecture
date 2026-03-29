@@ -72,9 +72,9 @@ class EdgeNode:
             "health": health_status,
             "temperature": f"{current_temp:.1f}C",
             "battery": f"%{current_battery:.1f}",
-            "snr": snr,
-            "is_positive": results["is_positive"] and combined_confidence > 0.5,
-            "confidence": combined_confidence,
+            "snr": float(snr),
+            "is_positive": bool(results["is_positive"] and combined_confidence > 0.5),
+            "confidence": float(combined_confidence),
             "findings": results["findings"]
         }
         

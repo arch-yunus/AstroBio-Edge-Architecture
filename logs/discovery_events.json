@@ -724,5 +724,211 @@
       }
     },
     "battery": "%95.0"
+  },
+  {
+    "timestamp": 1774797207.31706,
+    "node_id": "Astro-Edge-01",
+    "health": "NOMİNAL",
+    "temperature": "27.5C",
+    "battery": "%97.5",
+    "snr": 3.6006925882322096,
+    "is_positive": true,
+    "confidence": 0.8375,
+    "findings": {
+      "Glisin": {
+        "type": "Amino Asit",
+        "match_ratio": "%100",
+        "description": "En basit amino asitlerden biri, protein yapı taşı."
+      },
+      "Beta-Karoten": {
+        "type": "Pigment",
+        "match_ratio": "%50",
+        "description": "Ultraviyole koruma sağlayan organik pigment."
+      }
+    },
+    "integrity_hash": "8fd829a459dbd8c1298db2659200bfacf43fec3cc464ea81092469b08bb24895"
+  },
+  {
+    "timestamp": 1774797240.8340344,
+    "node_id": "Astro-Edge-01",
+    "health": "NOMİNAL",
+    "temperature": "27.5C",
+    "battery": "%97.5",
+    "snr": 3.421205673846026,
+    "is_positive": true,
+    "confidence": 0.95,
+    "findings": {
+      "Glisin": {
+        "type": "Amino Asit",
+        "match_ratio": "%100",
+        "description": "En basit amino asitlerden biri, protein yapı taşı."
+      },
+      "Alanin": {
+        "type": "Amino Asit",
+        "match_ratio": "%100",
+        "description": "Karbon bazlı yaşam için kritik bir amino asit."
+      },
+      "Klorofil-A": {
+        "type": "Pigment",
+        "match_ratio": "%100",
+        "description": "Fotosentetik yaşamın güçlü bir göstergesi."
+      },
+      "Beta-Karoten": {
+        "type": "Pigment",
+        "match_ratio": "%100",
+        "description": "Ultraviyole koruma sağlayan organik pigment."
+      },
+      "Metan-Ojenik-Marker": {
+        "type": "Metabolic Product",
+        "match_ratio": "%100",
+        "description": "Aktif biyolojik süreçlerin yan ürünü."
+      }
+    },
+    "integrity_hash": "6ff1c904bbca196f08bb8a31578000146ab68e443dbc594dc0bb9126d848b54a"
+  },
+  {
+    "timestamp": 1774797241.254334,
+    "node_id": "Astro-Edge-02",
+    "health": "NOMİNAL",
+    "temperature": "27.5C",
+    "battery": "%97.5",
+    "snr": 3.762712624839111,
+    "is_positive": true,
+    "confidence": 0.86,
+    "findings": {
+      "Glisin": {
+        "type": "Amino Asit",
+        "match_ratio": "%100",
+        "description": "En basit amino asitlerden biri, protein yapı taşı."
+      },
+      "Alanin": {
+        "type": "Amino Asit",
+        "match_ratio": "%50",
+        "description": "Karbon bazlı yaşam için kritik bir amino asit."
+      },
+      "Klorofil-A": {
+        "type": "Pigment",
+        "match_ratio": "%100",
+        "description": "Fotosentetik yaşamın güçlü bir göstergesi."
+      },
+      "Beta-Karoten": {
+        "type": "Pigment",
+        "match_ratio": "%100",
+        "description": "Ultraviyole koruma sağlayan organik pigment."
+      },
+      "Metan-Ojenik-Marker": {
+        "type": "Metabolic Product",
+        "match_ratio": "%50",
+        "description": "Aktif biyolojik süreçlerin yan ürünü."
+      }
+    },
+    "integrity_hash": "a82614398ec97a857b12913f0562c88636e9a6fce3afc858f1fd81b8cc98a7af"
+  },
+  {
+    "timestamp": 1774797241.6738987,
+    "node_id": "Astro-Edge-03",
+    "health": "NOMİNAL",
+    "temperature": "27.6C",
+    "battery": "%97.5",
+    "snr": 3.1898384277741503,
+    "is_positive": true,
+    "confidence": 0.8375,
+    "findings": {
+      "Glisin": {
+        "type": "Amino Asit",
+        "match_ratio": "%100",
+        "description": "En basit amino asitlerden biri, protein yapı taşı."
+      },
+      "Klorofil-A": {
+        "type": "Pigment",
+        "match_ratio": "%100",
+        "description": "Fotosentetik yaşamın güçlü bir göstergesi."
+      },
+      "Beta-Karoten": {
+        "type": "Pigment",
+        "match_ratio": "%50",
+        "description": "Ultraviyole koruma sağlayan organik pigment."
+      },
+      "Metan-Ojenik-Marker": {
+        "type": "Metabolic Product",
+        "match_ratio": "%50",
+        "description": "Aktif biyolojik süreçlerin yan ürünü."
+      }
+    },
+    "integrity_hash": "b5a94865f2235bb63c8cb39df3e8c31d66733937bab26a7389c0c9663627fac3"
+  },
+  {
+    "timestamp": 1774797243.097257,
+    "node_id": "Astro-Edge-01",
+    "health": "NOMİNAL",
+    "temperature": "28.2C",
+    "battery": "%95.0",
+    "snr": 4.281087586547777,
+    "is_positive": false,
+    "confidence": 0.78125,
+    "findings": {
+      "Glisin": {
+        "type": "Amino Asit",
+        "match_ratio": "%50",
+        "description": "En basit amino asitlerden biri, protein yapı taşı."
+      },
+      "Alanin": {
+        "type": "Amino Asit",
+        "match_ratio": "%50",
+        "description": "Karbon bazlı yaşam için kritik bir amino asit."
+      },
+      "Klorofil-A": {
+        "type": "Pigment",
+        "match_ratio": "%50",
+        "description": "Fotosentetik yaşamın güçlü bir göstergesi."
+      },
+      "Metan-Ojenik-Marker": {
+        "type": "Metabolic Product",
+        "match_ratio": "%100",
+        "description": "Aktif biyolojik süreçlerin yan ürünü."
+      }
+    },
+    "integrity_hash": "7deb28f2f057d67aace23eb212e91e5eae0da3760d90d966e2b15be05c0c67bc"
+  },
+  {
+    "timestamp": 1774797243.520191,
+    "node_id": "Astro-Edge-02",
+    "health": "NOMİNAL",
+    "temperature": "28.3C",
+    "battery": "%95.0",
+    "snr": 4.48012996462264,
+    "is_positive": false,
+    "confidence": 0.725,
+    "findings": {
+      "Beta-Karoten": {
+        "type": "Pigment",
+        "match_ratio": "%50",
+        "description": "Ultraviyole koruma sağlayan organik pigment."
+      },
+      "Metan-Ojenik-Marker": {
+        "type": "Metabolic Product",
+        "match_ratio": "%50",
+        "description": "Aktif biyolojik süreçlerin yan ürünü."
+      }
+    },
+    "integrity_hash": "b68104b16c9f83f8ef48ed019979bf8e92343ebae9419af50c0cbe5f47f4ad43"
+  },
+  {
+    "timestamp": 1774797243.9417653,
+    "node_id": "Astro-Edge-03",
+    "health": "NOMİNAL",
+    "temperature": "28.3C",
+    "battery": "%95.0",
+    "snr": 4.123753512208041,
+    "is_positive": false,
+    "confidence": 0.725,
+    "findings": {
+      "Glisin": {
+        "type": "Amino Asit",
+        "match_ratio": "%50",
+        "description": "En basit amino asitlerden biri, protein yapı taşı."
+      }
+    },
+    "integrity_hash": "c23772023e6ec9f9b9491da548a50958a63d6c55ee46041fa50c2742f692abc2"
   }
 ]

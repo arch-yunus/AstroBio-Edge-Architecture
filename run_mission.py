@@ -1,6 +1,7 @@
 import time
 import os
 import sys
+import random
 
 # Adding project root to path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -8,68 +9,77 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from src.mesh_coordinator import MeshCoordinator
 from src.base_station import BaseStation
 from src.utils.report_generator import generate_final_report
+from src.utils.dashboard_manager import DashboardManager
+from src.utils.data_logger import DataLogger
 
-def run_astro_mission(swarm_size=4, cycles=3):
+def run_astro_mission(swarm_size=4, cycles=5):
     """
-    Tüm AstroBio-Edge-Architecture projesini orkestre eden ana dosya.
-    Simülasyon, veri işleme, FDIR ve raporlama süreçlerini birleştirir.
+    ASTROBIO-EDGE MİSYONU - v0.5.0 SOVEREIGNTY TIER
+    Adaptif sürü zekası ve profesyonel görselleştirme ile.
     """
-    print("\n" + "*"*80)
-    print("      ASTROBIO-EDGE MİSYONU BAŞLATILIYOR (EVRENSEL - UNIVERSAL CLASS)")
-    print("*"*80 + "\n")
-    
-    # 1. Kontrol Merkezi ve Sürü Koordinatörünü Hazırla
+    # 1. Altyapıyı Hazırla
     base_station = BaseStation()
     coordinator = MeshCoordinator(swarm_size=swarm_size)
-    
-    print(f"[Mission] {swarm_size} düğümlük sürü ve Görev Kontrol Merkezi aktif.")
+    dashboard = DashboardManager()
+    logger = DataLogger()
+    mission_logs = ["Misyon Kontrolü Başlatıldı", f"{swarm_size} otonom düğüm çevrimiçi"]
     
     # 2. Görev Döngülerini Başlat
     for cycle in range(cycles):
-        print(f"\n" + "-"*60)
-        print(f"      GÖREV DÖNGÜSÜ {cycle+1} / {cycles}")
-        print("-"*60 + "\n")
+        mission_logs.append(f"Döngü {cycle+1} başlatılıyor...")
         
-        # Sürü koordinatörü düğümleri çalıştırır
+        # Rastgele Güneş Fırtınası Olasılığı (%15)
+        solar_storm = random.random() < 0.15
+        if solar_storm:
+            mission_logs.append("! UYARI: Güneş Patlaması Tespit Edildi !")
+        
+        # Her düğüm için hata enjektörünü güncelle (Güneş fırtınası durumu)
         for node in coordinator.nodes:
-            # Rastgele gün ışığı simülasyonu (Isınma/Soğuma için)
-            sun_exposure = (cycle % 2 == 0)
+            node.fault_injector.update_solar_storm_status(solar_storm)
             
-            # Düğüm keşif döngüsünü çalıştırır
+            # Adaptif modda ise CPU yükünü artır
+            cpu_usage = 0.8 if coordinator.adaptive_mode else 0.4
+            
+            # Düğümü çalıştır
+            sun_exposure = (cycle % 2 == 0)
             event = node.run_discovery_cycle(sun_exposure=sun_exposure)
             
-            # Veriyi kontrol merkezine (BaseStation) ilet
+            # Verileme ve Loglama
             base_station.receive_telemetry(node.node_id, event)
+            logger.log_event(event) # Kriptografik güvenli loglama
             
-            # Görselleştirme için kısa bekleme (Simülasyon akışını izlemek için)
-            time.sleep(0.3)
+            if event["is_positive"]:
+                mission_logs.append(f"!!! {node.node_id} bulgu raporladı!")
+
+            # Dashboard Güncellemesi (Her düğümden sonra canlı)
+            dashboard.render_mission(
+                [n.logs[-1] if n.logs else {} for n in coordinator.nodes],
+                coordinator.get_swarm_status(),
+                mission_logs
+            )
+            time.sleep(0.4)
             
-        # Görev Kontrol İstasyonunda durumu güncelle
-        base_station.display_dashboard()
-        
-    # 3. Misyon Sonu Raporu Oluştur
-    print("\n" + "="*80)
-    print("      GÖREV SONU ANALİZİ VE RAPORLAMA")
-    print("="*80 + "\n")
-    
+        # Döngü sonu koordinasyon (Adaptasyon ve Konsensüs)
+        coordinator.orchestrate_swarm(cycles=0) # Sadece iç mantığı çalıştırmak için (0 cycles)
+        time.sleep(1)
+
+    # 3. Misyon Sonu Raporu
     mission_summary = base_station.generate_mission_report()
-    
-    # Mevcut rapor üreticisi ile PDF/HTML benzeri log oluştur (varsayılan araç)
     generate_final_report(mission_summary)
     
-    print("\n\n" + "*"*80)
-    print("      ASTROBIO-EDGE MİSYONU BAŞARIYLA TAMAMLANDI.")
-    print("*"*80 + "\n")
+    # Final Mesajı
+    dashboard.console.print("\n[bold green]GÖREV BAŞARIYLA TAMAMLANDI. Tüm veriler mühürlendi ve merkezi sunucuya iletildi.[/bold green]")
+    dashboard.console.print(f"Rapor Yolu: logs/mission_dashboard.html")
 
 if __name__ == "__main__":
-    # Misyon parametrelerini ayarla
     size = 3
     steps = 4
-    
-    # Eğer terminalden argüman gelirse kullan (İsteğe bağlı)
     if len(sys.argv) > 1:
         size = int(sys.argv[1])
     if len(sys.argv) > 2:
         steps = int(sys.argv[2])
         
-    run_astro_mission(swarm_size=size, cycles=steps)
+    try:
+        run_astro_mission(swarm_size=size, cycles=steps)
+    except KeyboardInterrupt:
+        print("\n[!] Misyon kullanıcı tarafından durduruldu.")

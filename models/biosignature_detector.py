@@ -62,7 +62,7 @@ class BiosignatureDetector:
         overall_confidence = np.mean(confidences) if confidences else 0.0
         
         return {
-            "is_positive": overall_confidence > self.confidence_threshold,
+            "is_positive": bool(overall_confidence > self.confidence_threshold),
             "confidence": float(overall_confidence),
             "findings": findings
         }

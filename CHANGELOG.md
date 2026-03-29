@@ -2,6 +2,15 @@
 
 Bu projedeki tüm önemli değişiklikler bu dosyada belgelenecektir.
 
+## [0.5.0] - 2026-03-29
+### Eklendi
+- **Sürü Zekası (Swarm Intelligence)**: Düğümler arası dinamik konsensüs (Quorum Sensing).
+- **Adaptif Örnekleme**: Pozitif bulgu durumunda sürünün otomatik olarak yüksek hassasiyetli taramaya geçmesi.
+- **Solar Flare Simülasyonu**: Tüm düğümleri etkileyen sistem genelinde hata enjeksiyonu.
+- **Kriptografik Bütünlük (SHA-256)**: NASA-STD-8739.8 uyumlu, değiştirilemez veri paketleri ve loglama.
+- **Rich Mission Control**: Terminalde profesyonel, canlı güncellenen görsel denetim masası.
+- **Stres Testi ve FMEA Raporlama**: Ekstrem koşullar için otomatik test ve raporlama betiği.
+
 ## [0.4.0] - 2026-03-29
 ### Eklendi
 - **FDIR Sistemi**: Otonom Hata Algılama, İzole Etme ve Kurtarma protokolleri.
